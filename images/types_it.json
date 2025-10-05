@@ -1,0 +1,102 @@
+[
+    {
+        "key": "t",
+        "desc": "proeritroblasto",
+        "img": "pro_ery.svg"
+    },
+    {
+        "key": "r",
+        "desc": "eritroblasto basofilo",
+        "img": "baso_ery.svg"
+    },
+    {
+        "key": "e",
+        "desc": "eritroblasto policromatofilo",
+        "img": "poly_ery.svg"
+    },
+    {
+        "key": "w",
+        "desc": "eritroblasto ortocromatico",
+        "img": "oxy_ery.svg"
+    },
+    {
+        "key": "a",
+        "desc": "linfocita",
+        "img": "lymph.svg"
+    },
+    {
+        "key": "q",
+        "desc": "plasmocellula",
+        "img": "plasma.svg"
+    },
+    {
+        "key": "x",
+        "desc": "monocita",
+        "img": "mono.svg"
+    },
+    {
+        "key": "b",
+        "desc": "mieloblasto",
+        "img": "bla.svg"
+    },
+    {
+        "key": "v",
+        "desc": "promielocita",
+        "img": "prom.svg"
+    },
+    {
+        "key": "s",
+        "desc": "mielocita",
+        "img": "myelo.svg"
+    },
+    {
+        "key": "c",
+        "desc": "eosinofilo",
+        "img": "eo.svg"
+    },
+    {
+        "key": "g",
+        "desc": "metamielocita",
+        "img": "meta.svg"
+    },
+    {
+        "key": "f",
+        "desc": "neutrofilo a banda",
+        "img": "sta.svg"
+    },
+    {
+        "key": "d",
+        "desc": "neutrofilo segmentato",
+        "img": "seg.svg"
+    },
+    {
+        "key": "h",
+        "desc": "basofilo",
+        "img": "baso.svg"
+    },
+    {
+        "key": "y",
+        "desc": "altra cellula",
+        "img": "other.svg"
+    },
+    {
+        "key": "z",
+        "desc": "megacariocita",
+        "img": "mega.svg"
+    },
+    {
+        "key": "n",
+        "desc": "mastocita",
+        "img": "mast.svg"
+    },
+    {
+        "key": "m",
+        "desc": "macrofago",
+        "img": "phage.svg"
+    },
+    {
+        "key": " ",
+        "desc": "cellula danneggiata",
+        "img": "laed.svg"
+    }
+]

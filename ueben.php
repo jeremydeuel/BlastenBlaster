@@ -3,7 +3,7 @@ require_once("backend.php");
 include("base_layout.php");
 ?>
 <body>
-<title>Practice Mode</title>
+<title><?php echo $_['practice mode'];?></title>
 <style>
     body {
         background-color: #202124;
@@ -81,10 +81,10 @@ include("base_layout.php");
 
     .overlay {
             position: fixed;
-            top: 0;
+            top: 60px;
             left: 0;
             width: 100%;
-            height: 100%;
+            height: calc(100%-50px);
             background-color: rgba(0, 0, 0, 0.8);
             display: none;  /* Hidden by default */
             justify-content: center;
@@ -189,6 +189,15 @@ include("base_layout.php");
         margin-bottom: 10px;
         }
     }
+    
+    .blastenblaster-menubar a {
+    color: #aaaaaa!important;
+    }
+    .blastenblaster-menubar svg {
+    color: #aaaaaa!important;
+  -webkit-filter: invert(100%); /* safari 6.0 - 9.0 */
+          filter: invert(100%);
+    }
 </style>
 </head>
 <body>
@@ -196,7 +205,11 @@ include("base_layout.php");
     <header class="text-white">
         <?php include('menubar.php'); ?>
     </header>
-    <script type="text/javascript" src="script.js"></script>
+    <script>
+    const cellTypesJSON = "<?php echo $_['celltypes file path'];?>";
+    const langDict = <?php echo json_encode($_['js lang']);?>;
+</script>
+    <script type="text/javascript" src="script.js?v=3"></script>
 
     <div class="container">
     <script>
@@ -205,14 +218,14 @@ include("base_layout.php");
 }
     </script>
         <div class="game-screen" id="game-container">
-            <button class="open-image" onclick="openImage()">Zellbild Verzeichnis</button>
-            <h1>Which cell type is this?</h1>
-            <label for="level-select">Select Game Level:</label>
+            <button class="open-image" onclick="openImage()"><?php echo $_['keyboard'];?></button>
+            <h1><?php echo $_['which celltype'];?></h1>
+            <label for="level-select"><?php echo $_['choose level'];?></label>
             <div>
                 <select id="level-select">
-                    <option value="0">Level 1</option>
-                    <option value="1">Level 2</option>
-                    <option value="2">Level 3</option>
+                    <option value="0"><?php echo $_['level'];?> 1</option>
+                    <option value="1"><?php echo $_['level'];?> 2</option>
+                    <option value="2"><?php echo $_['level'];?> 3</option>
                 </select>
                 
             </div>
@@ -221,7 +234,7 @@ include("base_layout.php");
             <div class="button-row" id="cell-type-buttons"></div>
             <div id="feedback" style="margin-top: 20px; font-size: 20px;"></div>
             <div id="feedback-comment" style="margin-top: 20px; font-size: 20px;"></div>
-            <div id="banner" style="display: none;">The cell type you picked would look like this:</div>
+            <div id="banner" style="display: none;"><?php echo $_['would look like'];?>:</div>
         </div>
     </div>
 

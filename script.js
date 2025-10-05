@@ -1,13 +1,9 @@
-const imgPath = "images/cells/";
+const imgPath = "";
 const iconPath = "images/cell_types/";
-const cellsJSON = "images/cells.json";
-const cellTypesJSON = "images/types.json";
-
 const cellImagePlaceholderID = "cell-image";
 const cellTypeButtonRowID = "cell-type-buttons";
 const feedbackElementID = "feedback";
 const feedbackCommentID = "feedback-comment";
-
 
 
 const gameLevel = [['d','f','a','x','c','h'], ['d','f','a','x','c','h','p','b','v','s','g'],['d','f','a','x','c','h','p','b','v','s','g','n','m','t','r','e','w']];
@@ -15,6 +11,7 @@ const gameLevel = [['d','f','a','x','c','h'], ['d','f','a','x','c','h','p','b','
 let cellImages = [];
 let cellTypes = [];
 let currentType = null;
+let currentCid = null
 let selectedLevel = 0; 
 let correctAnswersCount = 0; 
 let incorrectAnswersCount = 0; 
@@ -47,16 +44,37 @@ class CellTypeMetaData {
 // Functions and event handlers//////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+function alternativeMapping(key) {
+    switch (key) {
+        case '0': return 't';
+        case '/': return 'r';
+        case '*': return 'e';
+        case '+': return 'w';
+        case '-': return 'g';
+        case '1': return 'b';
+        case '2': return 'v';
+        case '3': return 's';
+        case '4': return 'x';
+        case '5': return 'a';
+        case '6': return 'd';
+        case '.': return 'f';
+        case '7': return 'h';
+        case '8': return 'c';
+        case '9': return 'q';
+        default: return key;
+    }
+}
+
 
 function checkAnswer(selectedAnswer) {
+    selectedAnswer = alternativeMapping(selectedAnswer);
     const feedbackElement = document.getElementById(feedbackElementID); 
     const feedbackComment = document.getElementById(feedbackCommentID); 
     const bannerElement = document.getElementById("banner");
-    console.log("Hallo");
+    //console.log("Hallo");
 
 
     const guessStatus = encodeURIComponent(selectedAnswer);
-    const currentCid = encodeURIComponent(currentType);
     
     // Fetch request to store current answer and type
     fetch(`api.php?cid=${currentCid}&guess=${guessStatus}`, {
@@ -69,7 +87,7 @@ function checkAnswer(selectedAnswer) {
                 throw new Error('Network response was not ok: ' + response.statusText);
             }
             // Handle response if needed
-            console.log('Answer stored successfully:', data);
+            //console.log('Answer stored successfully:', data);
         });
     })
     .catch(error => {
@@ -79,7 +97,7 @@ function checkAnswer(selectedAnswer) {
 
 
     if (selectedAnswer === currentType) {
-        feedbackElement.textContent = "Richtig!"; 
+        feedbackElement.textContent = langDict['correct!']; ; 
         feedbackElement.style.color = "green"; 
         bannerElement.style.display = "none"; 
         setTimeout(() => {
@@ -89,12 +107,12 @@ function checkAnswer(selectedAnswer) {
 
         
     } else {
-        feedbackElement.textContent = `Falsch! Probier's nochmal!`; 
+        feedbackElement.textContent = langDict['try again']; ; 
         feedbackElement.style.color = "red"; 
 
         bannerElement.style.display = "block";
         bannerElement.innerHTML = `
-            Der Zelltyp welcher du gewählt hast würde so aussehen:<br />`
+            ${langDict['would look like']}:<br />`
         // Get  three random images of selected anser if incorrect answer
         for (let i=0; i<3; i++) {
             console.log(`Fetching random image ${i} from api.php?cell=${encodeURIComponent(selectedAnswer)}`)
@@ -149,6 +167,7 @@ function displayRandomImage (types) {
                 cellImagePlaceholder.src = imgPath + data.path
                 cellImagePlaceholder.alt = `Cell image of type ${data.type}`
                 currentType = data.type
+                currentCid = data.cid
             });
         })
         .catch(error => {
@@ -272,26 +291,19 @@ function closeImage() {
 
 
 async function initPage () {
-    await initializeCellImages(cellsJSON);
     await initializeCellTypes(cellTypesJSON);
     setupEventListeners(); 
     setupLevelSelector(); 
     displayRandomImage(gameLevel[selectedLevel]);
     displayCellTypeButtons();
-    
 }
 
 
 // handle keyboard input for selecting answers
 function handleKeyboardInput(event) {
     const keyPressed = event.key.toLowerCase(); 
-
-    
-    for (const cellType of cellTypes) {
-        if (cellType.key === keyPressed) {
-            checkAnswer(cellType.key); 
-            break; 
-        }
+    if ('abcdefghijklmnopqrstuvwxyz1234567890./+*-'.includes(keyPressed)) {
+     checkAnswer(keyPressed);
     }
 }
 

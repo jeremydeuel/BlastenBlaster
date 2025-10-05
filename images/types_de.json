@@ -1,0 +1,102 @@
+[
+    {
+        "key": "t",
+        "desc": "Proerythroblast",
+        "img": "pro_ery.svg"
+    },
+    {
+        "key": "r",
+        "desc": "Basophiler Erythroblast",
+        "img": "baso_ery.svg"
+    },
+    {
+        "key": "e",
+        "desc": "Polychromatischer Erythroblast",
+        "img": "poly_ery.svg"
+    },
+    {
+        "key": "w",
+        "desc": "Oxyphiler Erythroblast",
+        "img": "oxy_ery.svg"
+    },
+    {
+        "key": "a",
+        "desc": "Lymphozyt",
+        "img": "lymph.svg"
+    },
+    {
+        "key": "q",
+        "desc": "Plasmazelle",
+        "img": "plasma.svg"
+    },
+    {
+        "key": "x",
+        "desc": "Monozyt",
+        "img": "mono.svg"
+    },
+    {
+        "key": "b",
+        "desc": "Myeloblast",
+        "img": "bla.svg"
+    },
+    {
+        "key": "v",
+        "desc": "Promyelozyt",
+        "img": "prom.svg"
+    },
+    {
+        "key": "s",
+        "desc": "Myelozyt",
+        "img": "myelo.svg"
+    },
+    {
+        "key": "c",
+        "desc": "Eosinophiler Granulozyt",
+        "img": "eo.svg"
+    },
+    {
+        "key": "g",
+        "desc": "Metamyelozyt",
+        "img": "meta.svg"
+    },
+    {
+        "key": "f",
+        "desc": "Stabkerniger Granulozyt",
+        "img": "sta.svg"
+    },
+    {
+        "key": "d",
+        "desc": "Segmentkerniger Granulozyt",
+        "img": "seg.svg"
+    },
+    {
+        "key": "h",
+        "desc": "Basophiler Granulozyt",
+        "img": "baso.svg"
+    },
+    {
+        "key": "y",
+        "desc": "andere Zelle",
+        "img": "other.svg"
+    },
+    {
+        "key": "z",
+        "desc": "Megakaryozyt",
+        "img": "mega.svg"
+    },
+    {
+        "key": "n",
+        "desc": "Mastzelle",
+        "img": "mast.svg"
+    },
+    {
+        "key": "m",
+        "desc": "Makrophage",
+        "img": "phage.svg"
+    },
+    {
+        "key": " ",
+        "desc": "L\u00e4dierte Zelle",
+        "img": "laed.svg"
+    }
+]

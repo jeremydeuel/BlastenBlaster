@@ -1,0 +1,102 @@
+[
+    {
+        "key": "t",
+        "desc": "proerythroblast",
+        "img": "pro_ery.svg"
+    },
+    {
+        "key": "r",
+        "desc": "basophilic erythroblast",
+        "img": "baso_ery.svg"
+    },
+    {
+        "key": "e",
+        "desc": "polychromatic erythroblast",
+        "img": "poly_ery.svg"
+    },
+    {
+        "key": "w",
+        "desc": "oxyphilic erythroblast",
+        "img": "oxy_ery.svg"
+    },
+    {
+        "key": "a",
+        "desc": "lymphocyte",
+        "img": "lymph.svg"
+    },
+    {
+        "key": "q",
+        "desc": "plasma cell",
+        "img": "plasma.svg"
+    },
+    {
+        "key": "x",
+        "desc": "monocyte",
+        "img": "mono.svg"
+    },
+    {
+        "key": "b",
+        "desc": "myeloblast",
+        "img": "bla.svg"
+    },
+    {
+        "key": "v",
+        "desc": "promyelocyte",
+        "img": "prom.svg"
+    },
+    {
+        "key": "s",
+        "desc": "myelocyte",
+        "img": "myelo.svg"
+    },
+    {
+        "key": "c",
+        "desc": "eosinophilic",
+        "img": "eo.svg"
+    },
+    {
+        "key": "g",
+        "desc": "metamyelocyte",
+        "img": "meta.svg"
+    },
+    {
+        "key": "f",
+        "desc": "band neutrophil",
+        "img": "sta.svg"
+    },
+    {
+        "key": "d",
+        "desc": "segmented neutrophil",
+        "img": "seg.svg"
+    },
+    {
+        "key": "h",
+        "desc": "basophilic",
+        "img": "baso.svg"
+    },
+    {
+        "key": "y",
+        "desc": "other cell",
+        "img": "other.svg"
+    },
+    {
+        "key": "z",
+        "desc": "megakaryocyte",
+        "img": "mega.svg"
+    },
+    {
+        "key": "n",
+        "desc": "mast cell",
+        "img": "mast.svg"
+    },
+    {
+        "key": "m",
+        "desc": "macrophage",
+        "img": "phage.svg"
+    },
+    {
+        "key": " ",
+        "desc": "damaged cell",
+        "img": "laed.svg"
+    }
+]

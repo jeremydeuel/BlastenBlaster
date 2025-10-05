@@ -1,0 +1,102 @@
+[
+    {
+        "key": "t",
+        "desc": "Proérythroblaste",
+        "img": "pro_ery.svg"
+    },
+    {
+        "key": "r",
+        "desc": "Érythroblaste basophile",
+        "img": "baso_ery.svg"
+    },
+    {
+        "key": "e",
+        "desc": "Érythroblaste polychromatique",
+        "img": "poly_ery.svg"
+    },
+    {
+        "key": "w",
+        "desc": "Érythroblaste orthochromatique",
+        "img": "oxy_ery.svg"
+    },
+    {
+        "key": "a",
+        "desc": "Lymphocytes",
+        "img": "lymph.svg"
+    },
+    {
+        "key": "q",
+        "desc": "Plasmocyte",
+        "img": "plasma.svg"
+    },
+    {
+        "key": "x",
+        "desc": "Monocyte",
+        "img": "mono.svg"
+    },
+    {
+        "key": "b",
+        "desc": "Myéloblaste",
+        "img": "bla.svg"
+    },
+    {
+        "key": "v",
+        "desc": "Promyélocyte",
+        "img": "prom.svg"
+    },
+    {
+        "key": "s",
+        "desc": "Myélocyte",
+        "img": "myelo.svg"
+    },
+    {
+        "key": "c",
+        "desc": "Éosinophile granulocyte",
+        "img": "eo.svg"
+    },
+    {
+        "key": "g",
+        "desc": "Métamyélocyte",
+        "img": "meta.svg"
+    },
+    {
+        "key": "f",
+        "desc": "Neutrophile à bande ",
+        "img": "sta.svg"
+    },
+    {
+        "key": "d",
+        "desc": "Neutrophile segmenté",
+        "img": "seg.svg"
+    },
+    {
+        "key": "h",
+        "desc": "Basophile granulocyte",
+        "img": "baso.svg"
+    },
+    {
+        "key": "y",
+        "desc": "Autre cellule",
+        "img": "other.svg"
+    },
+    {
+        "key": "z",
+        "desc": "Mégacaryocyte",
+        "img": "mega.svg"
+    },
+    {
+        "key": "n",
+        "desc": "Mastocyte",
+        "img": "mast.svg"
+    },
+    {
+        "key": "m",
+        "desc": "Macrophage",
+        "img": "phage.svg"
+    },
+    {
+        "key": " ",
+        "desc": "Cellule lésée",
+        "img": "laed.svg"
+    }
+]

@@ -1,14 +1,12 @@
-const imgPath = "images/cells/";
+const imgPath = "";
 const iconPath = "images/cell_types/";
-const cellsJSON = "images/cells.json";
-const cellTypesJSON = "images/types.json";
 const cellImagePlaceholderID = "cell-image";
 const cellTypeButtonRowID = "cell-type-buttons";
 const feedbackElementID = "feedback";
 
 let cellImages = [];
 let cellTypes = [];
-let currentType = null;
+let currentCid = null
 let selectedLevel = 0; 
 let correctAnswersCount = 0; 
 let incorrectAnswersCount = 0; 
@@ -40,12 +38,36 @@ class CellTypeMetaData {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Functions and event handlers//////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function alternativeMapping(key) {
+    switch (key) {
+        case '0': return 't';
+        case '/': return 'r';
+        case '*': return 'e';
+        case '+': return 'w';
+        case '-': return 'g';
+        case '1': return 'b';
+        case '2': return 'v';
+        case '3': return 's';
+        case '4': return 'x';
+        case '5': return 'a';
+        case '6': return 'd';
+        case '.': return 'f';
+        case '7': return 'h';
+        case '8': return 'c';
+        case '9': return 'q';
+        default: return key;
+    }
+}
+
+
 function checkAnswer(selectedAnswer) {
+    if (!isGameActive) return;
+    selectedAnswer = alternativeMapping(selectedAnswer);
     const feedbackElement = document.getElementById(feedbackElementID); 
     const counterDisplay = document.getElementById('counter-display'); 
 
     const guessStatus = encodeURIComponent(selectedAnswer);
-    const currentCid = encodeURIComponent(currentType);
     
         fetch(`api.php?cid=${currentCid}&guess=${guessStatus}`, {
         method: 'GET'
@@ -56,15 +78,8 @@ function checkAnswer(selectedAnswer) {
                 console.error('Error storing answer:', data);
                 throw new Error('Network response was not ok: ' + response.statusText);
             }
-            console.log('Answer stored successfully:', data);
-        });
-    })
-    .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-    });
-    
-    if (selectedAnswer === currentType) {
-        feedbackElement.textContent = "Correct! Well done."; 
+            if (data.correct) {
+                feedbackElement.textContent = langDict['correct!']; 
         feedbackElement.style.color = "green"; 
         correctAnswersCount++;
         incorrectAnswersCount = 0;
@@ -76,12 +91,15 @@ function checkAnswer(selectedAnswer) {
         
         counterDisplay.textContent = `${counter}`; 
 
+        setTimeout(() => {
+            feedbackElement.textContent = " "; 
+        }, 1500);
+
         // Check if counter has reached 0
         if (counter === 0) {
             clearInterval(timerInterval);
             document.getElementById('timer-canvas').style.display = 'none';  
             currentLevel++; 
-            // Grab the level element
             const levelElement = document.getElementById('level');
     
             
@@ -91,7 +109,7 @@ function checkAnswer(selectedAnswer) {
             
             setTimeout(() => {
             levelElement.classList.remove('highlight-level');
-            }, 1500); // Match duration with CSS animation
+            }, 1500); 
      
             storeCurrentLevel(); 
             counter = 10; 
@@ -99,11 +117,11 @@ function checkAnswer(selectedAnswer) {
              // Hide the cell image when moving to the next level
             document.getElementById(cellImagePlaceholderID).style.display = 'none';
             document.getElementById('start-game-button').style.display = 'block'; 
-            feedbackElement.textContent += "Glückwunsch! Auf ins nächste Level!";
+            feedbackElement.textContent += langDict['next level'];
             createCircleCounter(counter);
-            console.log("Game is now active:", isGameActive);
+            //console.log("Game is now active:", isGameActive);
             setTimeout(() => {
-                feedbackElement.textContent = ""; 
+                feedbackElement.textContent = " "; 
                 if (isGameActive) {
                     displayRandomImage(); 
                     displayCellTypeButtons(); 
@@ -114,27 +132,27 @@ function checkAnswer(selectedAnswer) {
             }, 3000);  
         } else {
             setTimeout(() => {
-                feedbackElement.textContent = "";
-                console.log("Game is now active:", isGameActive);
-                if (isGameActive) { // Add this check
+                feedbackElement.textContent = " ";
+                //console.log("Game is now active:", isGameActive);
+                if (isGameActive) { 
                     displayRandomImage(); 
                 }    
             }, 100);  
         }
-    } else {
-
+            } else { // answer not correct
+                
         incorrectAnswersCount++; 
         if (currentLevel >= 4) {
             counter += 2; 
         }
 
-        feedbackElement.textContent = `Incorrect! Try it again!`; 
-        feedbackElement.style.color = "red"; 
+        feedbackElement.textContent = langDict['try again']; 
+        feedbackElement.style.color = "#BF0D3E"; 
         
         // Check if the user has guessed incorrectly twice
         if (incorrectAnswersCount === 2) {
-            feedbackElement.textContent = "Let's try another one..."; 
-            feedbackElement.style.color = "yellow";
+            feedbackElement.textContent = langDict['try another']; 
+            feedbackElement.style.color = "#F3AB00";
             
             
             
@@ -147,9 +165,16 @@ function checkAnswer(selectedAnswer) {
             incorrectAnswersCount = 0; 
         }
         createCircleCounter(counter);
-    }
-
-    counterDisplay.textContent = `${counter}`; 
+            }
+            counterDisplay.textContent = `${counter}`; 
+            //console.log('Answer stored successfully:', data);
+        });
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+    });
+    return;
+    
 }
 
 function drawTimerCanvas(percentage) {
@@ -165,16 +190,16 @@ function drawTimerCanvas(percentage) {
     // Draw the background circle
     context.beginPath();
     context.arc(centerX, centerY, radius, 0, Math.PI * 2, false);
-    context.fillStyle = '#444'; 
+    context.fillStyle = '#E7E7E7'; 
     context.fill();
 
     // Draw progress arc
     context.beginPath();
     context.arc(centerX, centerY, radius, -Math.PI / 2, (-Math.PI / 2) + (Math.PI * 2 * percentage), false);
     context.lineTo(centerX, centerY);
-    context.fillStyle = '#f1216a'; 
+    context.fillStyle = '#A4D233'; 
     context.fill();
-    context.fillStyle = '#fff'; 
+    context.fillStyle = '#0028A5'; 
     context.font = '20px Arial'; 
     context.textAlign = 'center'; 
     context.textBaseline = 'middle'; 
@@ -184,7 +209,7 @@ function drawTimerCanvas(percentage) {
 function storeCurrentLevel() {
     console.log("Storing current level..."); // Verify function execution
 
-    fetch(`api.php?achievement=${currentLevel}&proficiency=${currentLevel}`, {
+    fetch(`api.php?score=${currentLevel}&proficiency=${currentLevel}`, {
         method: 'GET', // Using GET to store the level
         credentials: 'include' // Include any cookies/session IDs if necessary
     })
@@ -209,7 +234,7 @@ function storeCurrentLevel() {
 async function loadCurrentLevel() {
     console.log("Loading current level...");
     try {
-        const response = await fetch(`api.php?user`, {
+        const response = await fetch("api.php?user", {
             method: 'GET',
             credentials: 'include'
         });
@@ -234,6 +259,9 @@ async function loadCurrentLevel() {
         } else {
             throw new Error("Invalid response structure");
         }
+        if (data.username == undefined) {
+            window.location = '/login.php';
+        }
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
         currentLevel = 1; // Defaulting to level 1 on error
@@ -242,27 +270,24 @@ async function loadCurrentLevel() {
 
 function updateScoreBoard() {
     const scoreBoard = document.getElementById('score-board');
-    scoreBoard.textContent = `Correct: ${correctAnswersCount} | Incorrect: ${incorrectAnswersCount}`;
+    scoreBoard.textContent = `${langDict['correct']}: ${correctAnswersCount} | ${langDict['incorrect']}: ${incorrectAnswersCount}`;
 }
 
 function updateCounterDisplay() {
     const counterDisplay = document.getElementById('counter-display'); 
-    counterDisplay.textContent = `Counter: ${counter}`; 
+    counterDisplay.textContent = `${langDict['counter']}: ${counter}`; 
     updateCartoonDisplay(); 
 }
 
 function displayRandomImage() {
     const types = 'trewaqxbvscgfdhyznm'
-
-    
     if (currentLevel < 2) {
         const types = 'aqxbvsgfd'
     } else if (currentLevel < 4) {
-        const types = 'rewtahc'
+        const types = 'rewtahcaqxbvsgfd'
     }
-    console.log("Random Type Selected:", types);
 
-    fetch(`api.php?cell=${encodeURIComponent(types)}`, {
+    fetch(`api.php?cell=${encodeURIComponent(types)}&competition`, {
         method: 'GET'
     })
         .then(response => {
@@ -271,14 +296,11 @@ function displayRandomImage() {
                     console.error('Error retrieving new cell:', data);
                     throw new Error('Network response was not ok: ' + response.statusText);
                 }
-
+                //console.log("current cell", data)
                 let cellImagePlaceholder = document.getElementById(cellImagePlaceholderID);
                 cellImagePlaceholder.src = imgPath + data.path
                 cellImagePlaceholder.alt = `Cell image of type ${data.type}`
-                currentType = data.type
-
-                // Log the current image type to the console
-                console.log("Current Image Type:", currentType);
+                currentCid = data.cid
             });
         })
         .catch(error => {
@@ -364,7 +386,7 @@ async function initializeCellTypes(myJsonFileToLoad) {
 // Initialize game when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('start-game').addEventListener('click', function() {
-        console.log("Start Game button clicked"); 
+        //console.log("Start Game button clicked"); 
         document.getElementById('start-game-button').style.display = 'none'; 
         document.getElementById(cellImagePlaceholderID).style.display = 'block'; 
         startTimer(); 
@@ -383,7 +405,6 @@ function closeImage() {
 }
 
 async function initPage () {
-    await initializeCellImages(cellsJSON);
     await initializeCellTypes(cellTypesJSON);
     
     await loadCurrentLevel(); 
@@ -399,15 +420,15 @@ async function initPage () {
 
 // Start Game Button functionality
 document.getElementById('start-game').addEventListener('click', function() {
-    console.log("Start Game button clicked"); 
+    //console.log("Start Game button clicked"); 
     // Clear any previous feedback message
     document.getElementById(feedbackElementID).textContent = ""; // Clear the feedback message
     isGameActive = true; // Set the game as active
-    console.log("Game is now active:", isGameActive);
+    //console.log("Game is now active:", isGameActive);
     document.getElementById('start-game-button').style.display = 'none'; 
     document.getElementById(cellImagePlaceholderID).style.display = 'block'; 
     timeRemaining = 60;
-    document.getElementById('timer-display').textContent = `Time Left: ${timeRemaining} seconds`; 
+    //document.getElementById('timer-display').textContent = `Time Left: ${timeRemaining} seconds`; 
     correctAnswersCount = 0; 
     incorrectAnswersCount = 0; 
     createCircleCounter(counter); 
@@ -427,14 +448,14 @@ function startTimer() {
             
             clearInterval(timerInterval);
             isGameActive = false; // Set the game as inactive
-            console.log("Game is now active:", isGameActive);
+            //console.log("Game is now active:", isGameActive);
 
             // Reset counter and remaining cells here
             counter = 10; 
             document.getElementById('counter-display').textContent = counter; 
             createCircleCounter(counter);
 
-            document.getElementById(feedbackElementID).textContent = 'Time is up! Try again!'; 
+            document.getElementById(feedbackElementID).textContent = langDict['timeOver']; 
             document.getElementById(cellImagePlaceholderID).style.display = 'none'; 
             document.getElementById('start-game-button').style.display = 'block'; 
         }
@@ -457,18 +478,15 @@ function createCircleCounter(numCircles) {
 
 function handleKeyboardInput(event) {
     const keyPressed = event.key.toLowerCase(); 
-    for (const cellType of cellTypes) {
-        if (cellType.key === keyPressed) {
-            checkAnswer(cellType.key); 
-            break; 
-        }
+    if ('abcdefghijklmnopqrstuvwxyz1234567890./+*-'.includes(keyPressed)) {
+     checkAnswer(keyPressed);
     }
 }
 
 
 function calculateTimeForLevel(level) {
     const k = 1.1; // adjust 'k' for more or less drastic change in remaining time
-    return Math.floor(30 * (1 / Math.pow(k, level - 1))); 
+    return Math.floor(60 * (1 / Math.pow(k, level - 1))); 
 }
 
 function preloadImage(src) {
