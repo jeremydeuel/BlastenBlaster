@@ -40,7 +40,7 @@ This learning programme was created as part of a **Master's thesis** by **Olivia
 * **Source Code:** The underlying source code for BlastenBlaster is licensed under the **GNU General Public License v3.0 (GPL 3.0)**.
 * **Cell Images & Data:** The actual cell images (images/cells and images/cells2 directories) and related data are licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC-SA 4.0)**. These can not be used for commercial purposes!
 * License text: [LICENSE.txt](LICENSE.txt)
-
+* The logos of the organisations included in this source code, SSH, University of Zurich, and University Hospital of Zurich, are not owned by us and can not be used without permission - ask before you reuse. They are not subjected by the license given above. 
 ### Dependencies
 
 BlastenBlaster utilizes the following third-party libraries:
