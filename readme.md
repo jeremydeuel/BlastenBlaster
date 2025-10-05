@@ -1,10 +1,12 @@
-# BlastenBlaster ????
+![BlastenBlaster Logo](./assets/blastenblaster.png)
+
+# BlastenBlaster
 
 An **open-source and free online learning programme** designed to help users quickly and playfully learn the **differentiation of blood and bone marrow cells**.
 
 ---
 
-## ???? Key Features
+## Key Features
 
 BlastenBlaster provides a comprehensive learning and practice environment structured into three main components: Learn, Practise, and Compare.
 
@@ -25,21 +27,20 @@ BlastenBlaster provides a comprehensive learning and practice environment struct
 * Ability to **Compare Yourself with Others**.
 * Features higher-level challenges where **Mistakes have consequences**.
 
----
 
-## ???? Project Origin
+## Project Origin
 
-This learning programme was created as part of a **Master's thesis** by **Olivia Hofmann** under the supervision of **Jeremy Deuel** at the **Universit??t Z??rich (UZH)**.
+This learning programme was created as part of a **Master's thesis** by **Olivia Hofmann** under the supervision of **Jeremy Deuel** at the **University of Zurich (UZH)**.
 
----
 
-## ???? License & Acknowledgements
+## License & Acknowledgements
 
 ### License
 
 * **Source Code:** The underlying source code for BlastenBlaster is licensed under the **GNU General Public License v3.0 (GPL 3.0)**.
 * **Cell Images & Data:** The actual cell images (images/cells and images/cells2 directories) and related data are licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC-SA 4.0)**. These can not be used for commercial purposes!
-* License text: [LICENSE.txt]
+* License text: [LICENSE.txt](LICENSE.txt)
+
 ### Dependencies
 
 BlastenBlaster utilizes the following third-party libraries:
