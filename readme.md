@@ -33,18 +33,12 @@ This learning programme was created as part of a **Master's thesis** by **Olivia
 
 ---
 
-## 📜 Status & License
-
-BlastenBlaster is fully **open-source** and **free of charge** for everyone to use and contribute to.
-
----
-
 ## 📜 License & Acknowledgements
 
 ### License
 
 * **Source Code:** The underlying source code for BlastenBlaster is licensed under the **GNU General Public License v3.0 (GPL 3.0)**.
-* **Cell Images & Data:** The actual cell images (images/cells and images/cells2 directories) and related data are licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)**. These can not be used for commercial activities!
+* **Cell Images & Data:** The actual cell images (images/cells and images/cells2 directories) and related data are licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)**. These can not be used for commercial purposes!
 
 ### Dependencies
 
