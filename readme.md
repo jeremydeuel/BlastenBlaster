@@ -1,27 +1,29 @@
-![BlastenBlaster Logo](./assets/blastenblaster.png)
+![BlastenBlaster Logo](./)
 
 # BlastenBlaster
 
-An **open-source and free online learning programme** designed to help users quickly and playfully learn the **differentiation of blood and bone marrow cells**.
+<img src="assets/blastenblaster.png" width="150px" height="150px" align="right" />
+
+> :bulb: BlastenBlaster is an **open-source and free online learning programme** designed to help users quickly and playfully learn the **differentiation of blood and bone marrow cells**.
 
 ---
 
 ## Key Features
 
-BlastenBlaster provides a comprehensive learning and practice environment structured into three main components: Learn, Practise, and Compare.
+BlastenBlaster provides a comprehensive learning and practice environment structured into three main components: :beginner: Learn, :school_satchel: Practise, and :checkered_flag: Compare.
 
-### Learn (First Steps)
+### :beginner: Learn (First Steps)
 * **18 Cell Types** covered in detail.
 * Focus on **Morphological Features**.
 * Guide for **Ideal Preparation** for the exercises.
 * **No Registration Required** to start learning.
 
-### Practise (Skill Building)
+### :school_satchel: Practise (Skill Building)
 * Practice in an environment with **No Time Pressure**.
 * **Mistakes Allowed** to encourage experimentation.
 * Progress through **Different Levels** to solidify knowledge.
 
-### Compare (Gamification & Challenge)
+### :checkered_flag: Compare (Gamification & Challenge)
 * Achieve **Fame and Honour on the Leaderboard**.
 * A fun "Blast the Blasts Away!" element.
 * Ability to **Compare Yourself with Others**.
@@ -41,6 +43,7 @@ This learning programme was created as part of a **Master's thesis** by **Olivia
 * **Cell Images & Data:** The actual cell images (images/cells and images/cells2 directories) and related data are licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC-SA 4.0)**. These can not be used for commercial purposes!
 * License text: [LICENSE.txt](LICENSE.txt)
 * The logos of the organisations included in this source code, SSH, University of Zurich, and University Hospital of Zurich, are not owned by us and can not be used without permission - ask before you reuse. They are not subjected by the license given above. 
+
 ### Dependencies
 
 BlastenBlaster utilizes the following third-party libraries:
