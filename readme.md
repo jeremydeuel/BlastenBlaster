@@ -1,5 +1,3 @@
-![BlastenBlaster Logo](./)
-
 # BlastenBlaster
 
 <img src="assets/blastenblaster.png" width="150px" height="150px" align="right" />
